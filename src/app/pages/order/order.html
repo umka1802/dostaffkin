@@ -43,13 +43,15 @@
         </div>
         <div class="main-speed">
             <div class="main-block-title">Скорость доставки</div>
-            @for (speed of speeds; track speed.value) {
-            <div class="main-speed-card" [class.is-active]="routeForm.value.speed === speed.value"
-                (click)="selectSpeed(speed.value)">
-                <img class="main-speed-media" src="images/icons/{{speed.value}}.svg" alt="Speed" />
-                <div class="main-speed-description">{{ speed.label }}</div>
+             <div class="main-speeds"> 
+                @for (speed of speeds; track speed.value) {
+                <div class="main-speed-card" [class.is-active]="routeForm.value.speed === speed.value"
+                    (click)="selectSpeed(speed.value)">
+                    <img class="main-speed-media" src="images/icons/{{speed.value}}.svg" alt="Speed" />
+                    <div class="main-speed-description">{{ speed.label }}</div>
+                </div>
+                }
             </div>
-            }
         </div>
 
         <div class="main-calculate-block">

@@ -7,11 +7,73 @@
     </title>
     <base href="/dostaffkin/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://testologia.ru/ymc_min.js" data-apikey="dca6feee-c230-4de7-9e01-9bb8f59e06f9" data-suggest-apikey="6d5ec4c8-7d82-4d8b-b7c9-33767c01d76c"></script>
-<style>*,*:before,*:after{box-sizing:border-box}@font-face{font-family:Roboto;src:url("./media/Roboto-Regular-UUBD26YO.ttf");font-weight:400}@font-face{font-family:Roboto;src:url("./media/Roboto-Bold-QPETXUE4.ttf");font-weight:700}@font-face{font-family:Roboto;src:url("./media/Roboto-Medium-6QFZLP4R.ttf");font-weight:500}html,body{margin:0;color:#111;font-family:Roboto,sans-serif}body{background:#fdfdfd}</style><link rel="stylesheet" href="/dostaffkin/styles-PYALWDQR.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/dostaffkin/styles-PYALWDQR.css"></noscript></head>
+    <script src="https://testologia.ru/ymc_min.js" data-apikey="dca6feee-c230-4de7-9e01-9bb8f59e06f9"
+        data-suggest-apikey="6d5ec4c8-7d82-4d8b-b7c9-33767c01d76c"></script>
+    <script>
+        (function () {
+            const redirectUrl = sessionStorage.getItem('angular-redirect-url');
+            if (redirectUrl) {
+                // Удаляем ключ, чтобы не срабатывал каждый раз
+                sessionStorage.removeItem('angular-redirect-url');
+
+                // Если это не просто корень — перенаправляем через history, чтобы Angular подхватил маршрут
+                if (redirectUrl !== '/' && redirectUrl !== '/dostaffkin/') {
+                    // Убираем префикс /dostaffkin/, если он есть в сохранённом URL, чтобы не было дублей
+                    let cleanPath = redirectUrl.replace(/^\/dostaffkin/, '');
+                    if (!cleanPath || cleanPath === '/') {
+                        cleanPath = '/';
+                    }
+                    window.history.replaceState(null, '', cleanPath);
+                    // После replaceState страница не перезагружается, но Angular увидит новый URL и отрендерит нужный маршрут
+                }
+            }
+        })();
+    </script>
+
+    <style>
+        *,
+        *:before,
+        *:after {
+            box-sizing: border-box
+        }
+
+        @font-face {
+            font-family: Roboto;
+            src: url("./media/Roboto-Regular-UUBD26YO.ttf");
+            font-weight: 400
+        }
+
+        @font-face {
+            font-family: Roboto;
+            src: url("./media/Roboto-Bold-QPETXUE4.ttf");
+            font-weight: 700
+        }
+
+        @font-face {
+            font-family: Roboto;
+            src: url("./media/Roboto-Medium-6QFZLP4R.ttf");
+            font-weight: 500
+        }
+
+        html,
+        body {
+            margin: 0;
+            color: #111;
+            font-family: Roboto, sans-serif
+        }
+
+        body {
+            background: #fdfdfd
+        }
+    </style>
+    <link rel="stylesheet" href="/dostaffkin/styles-PYALWDQR.css" media="print" onload="this.media='all'"><noscript>
+        <link rel="stylesheet" href="/dostaffkin/styles-PYALWDQR.css">
+    </noscript>
+</head>
 
 <body>
     <app-root></app-root>
-<script src="/dostaffkin/main-4A32S3EE.js" type="module"></script></body>
+    <script src="/dostaffkin/main-4A32S3EE.js" type="module"></script>
+</body>
 
 </html>

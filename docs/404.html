@@ -3,9 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title>Page not found</title>
+    <!-- Сохраняем, куда хотел попасть пользователь -->
     <script>
-      sessionStorage.redirect = location.href;
-      location.replace(location.pathname.replace(/\/[^\/]*$/, '') + '/');
+      sessionStorage.setItem('angular-redirect-url', location.pathname + location.search + location.hash);
+      // Просто открываем index.html — дальше Angular сам всё подхватит
+      location.replace('/dostaffkin/index.html');
     </script>
   </head>
   <body>

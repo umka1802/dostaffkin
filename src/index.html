@@ -7,6 +7,27 @@
     </title>
     <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        (function () {
+            const redirectUrl = sessionStorage.getItem('angular-redirect-url');
+            if (redirectUrl) {
+                // Удаляем ключ, чтобы не срабатывал каждый раз
+                sessionStorage.removeItem('angular-redirect-url');
+
+                // Если это не просто корень — перенаправляем через history, чтобы Angular подхватил маршрут
+                if (redirectUrl !== '/' && redirectUrl !== '/dostaffkin/') {
+                    // Убираем префикс /dostaffkin/, если он есть в сохранённом URL, чтобы не было дублей
+                    let cleanPath = redirectUrl.replace(/^\/dostaffkin/, '');
+                    if (!cleanPath || cleanPath === '/') {
+                        cleanPath = '/';
+                    }
+                    window.history.replaceState(null, '', cleanPath);
+                    // После replaceState страница не перезагружается, но Angular увидит новый URL и отрендерит нужный маршрут
+                }
+            }
+        })();
+    </script>
+
     <script src="https://testologia.ru/ymc_min.js" data-apikey="dca6feee-c230-4de7-9e01-9bb8f59e06f9"
         data-suggest-apikey="6d5ec4c8-7d82-4d8b-b7c9-33767c01d76c"></script>
 </head>

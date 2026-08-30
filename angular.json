@@ -21,6 +21,7 @@
             "tsConfig": "tsconfig.app.json",
             "outputPath": "docs",
             "baseHref": "/docs/",
+            "deployUrl": "/docs/",
             "assets": [
               {
                 "glob": "**/*",
